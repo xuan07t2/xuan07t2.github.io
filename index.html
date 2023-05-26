@@ -1,5 +1,21 @@
 <!DOCTYPE html>
-<head></head>
+
+<head>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" defer></script>
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function () {
+            OneSignal.init({
+                appId: "4f4a143f-2a38-41a0-b1ac-9f456dad63d3",
+                safari_web_id: "web.onesignal.auto.5ffbfb2e-5b9e-4e33-a6e5-d97b1e693743",
+                notifyButton: {
+                    enable: true,
+                },
+            });
+        });
+    </script>
+</head>
+
 <body>
     <p>Welcome to my app</p>
 </body>
