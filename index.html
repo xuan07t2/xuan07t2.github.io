@@ -15,30 +15,41 @@
         });
     </script> -->
 </head>
-
 <body>
-    <p>Welcome to my app</p>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-analytics.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    <div class="container">
+        <div>Notification data will receive here if the app is open, and focused</div>
+        <div class="message" style="min-height: 80px;"></div>
+        <div>Device Token:</div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.14.0/firebase-messaging-compat.js"></script>
+    <script>
         const firebaseConfig = {
-          apiKey: "AIzaSyCzvIMcOH4mZkfgW8qMGneMsvIjOE-DX7c",
-          authDomain: "fir-efc24.firebaseapp.com",
-          projectId: "fir-efc24",
-          storageBucket: "fir-efc24.appspot.com",
-          messagingSenderId: "514119084796",
-          appId: "1:514119084796:web:8177ae9ed169ae6125c579",
-          measurementId: "G-W1ZWDR64ZY"
+            apiKey: "AIzaSyDvlnQrEBQfKaDLuUDjgFacbL-qk9cTcEI",
+            authDomain: "fir-hr-a6e5a.firebaseapp.com",
+            projectId: "fir-hr-a6e5a",
+            storageBucket: "fir-hr-a6e5a.appspot.com",
+            messagingSenderId: "263371950169",
+            appId: "1:263371950169:web:27352fec2dc59b2f3d4948"
         };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-      </script>
+        const app = firebase.initializeApp(firebaseConfig)
+        const messaging = firebase.messaging();
+
+        messaging.getToken({ vapidKey: 'BGqbKM_4QlNLaR4aiby0dbg4_duTKmf-cejZvsvZu8bhbG8krsgjXmCojcQ0qH0cWpGndMOSL5XT1VPFQom_GAs' })
+
+        messaging.onMessage((payload) => {
+            // notification data receive here, use it however you want
+            // keep in mind if message receive here, it will not notify in background
+            console.log('Message received. ', payload);
+            const messagesElement = document.querySelector('.message');
+            const dataHeaderElement = document.createElement('h5');
+            const dataElement = document.createElement('pre');
+            dataElement.style = 'overflow-x:hidden;';
+            dataHeaderElement.textContent = 'Message Received:';
+            dataElement.textContent = JSON.stringify(payload, null, 2);
+            messagesElement.appendChild(dataHeaderElement);
+            messagesElement.appendChild(dataElement);
+        });
+    </script>
+    
 </body>
