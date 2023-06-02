@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 
 <head>
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" defer></script>
-    <script>
-        window.OneSignal = window.OneSignal || [];
-        OneSignal.push(function () {
-            OneSignal.init({
-                appId: "4f4a143f-2a38-41a0-b1ac-9f456dad63d3",
-                safari_web_id: "web.onesignal.auto.5ffbfb2e-5b9e-4e33-a6e5-d97b1e693743",
-                notifyButton: {
-                    enable: true,
-                },
-            });
-        });
-    </script>
 </head>
 <body>
     <div class="container">
@@ -35,7 +22,20 @@
         const app = firebase.initializeApp(firebaseConfig)
         const messaging = firebase.messaging();
 
-        messaging.getToken({ vapidKey: 'BGqbKM_4QlNLaR4aiby0dbg4_duTKmf-cejZvsvZu8bhbG8krsgjXmCojcQ0qH0cWpGndMOSL5XT1VPFQom_GAs' })
+        messaging.getToken({ vapidKey: 'BGqbKM_4QlNLaR4aiby0dbg4_duTKmf-cejZvsvZu8bhbG8krsgjXmCojcQ0qH0cWpGndMOSL5XT1VPFQom_GAs' }).then((currentToken) => {
+            // app token used for sending notifications
+            if (currentToken) {
+                console.log(currentToken);
+                document.querySelector('body').append(currentToken)
+                // sendTokenToServer(currentToken)
+            }else{
+                // setTokenSentToServer(false);
+            }
+        }).catch((err) => {
+            // notifications are manually blocked, you can ask for unblock here
+            console.log('An error occurred while retrieving token. ', err);
+            // setTokenSentToServer(false);
+        });
 
         messaging.onMessage((payload) => {
             // notification data receive here, use it however you want
