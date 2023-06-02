@@ -22,20 +22,20 @@
         const app = firebase.initializeApp(firebaseConfig)
         const messaging = firebase.messaging();
 
-        messaging.getToken({ vapidKey: 'BGqbKM_4QlNLaR4aiby0dbg4_duTKmf-cejZvsvZu8bhbG8krsgjXmCojcQ0qH0cWpGndMOSL5XT1VPFQom_GAs' }).then((currentToken) => {
-            // app token used for sending notifications
-            if (currentToken) {
-                console.log(currentToken);
-                document.querySelector('body').append(currentToken)
-                // sendTokenToServer(currentToken)
-            }else{
-                // setTokenSentToServer(false);
-            }
-        }).catch((err) => {
-            // notifications are manually blocked, you can ask for unblock here
-            console.log('An error occurred while retrieving token. ', err);
-            // setTokenSentToServer(false);
-        });
+        // messaging.getToken({ vapidKey: 'BGqbKM_4QlNLaR4aiby0dbg4_duTKmf-cejZvsvZu8bhbG8krsgjXmCojcQ0qH0cWpGndMOSL5XT1VPFQom_GAs' }).then((currentToken) => {
+        //     // app token used for sending notifications
+        //     if (currentToken) {
+        //         console.log(currentToken);
+        //         document.querySelector('body').append(currentToken)
+        //         // sendTokenToServer(currentToken)
+        //     }else{
+        //         // setTokenSentToServer(false);
+        //     }
+        // }).catch((err) => {
+        //     // notifications are manually blocked, you can ask for unblock here
+        //     console.log('An error occurred while retrieving token. ', err);
+        //     // setTokenSentToServer(false);
+        // });
 
         // messaging.onMessage((payload) => {
         //     // notification data receive here, use it however you want
