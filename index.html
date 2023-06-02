@@ -4,7 +4,7 @@
 </head>
 <body>
     <div class="container">
-        <div>Notification data will receive here if the app is open, and focused</div>
+        <div>Notification data will receive here if the app is open, and focused::</div>
         <div class="message" style="min-height: 80px;"></div>
         <div>Device Token:</div>
     </div>
@@ -37,19 +37,19 @@
             // setTokenSentToServer(false);
         });
 
-        messaging.onMessage((payload) => {
-            // notification data receive here, use it however you want
-            // keep in mind if message receive here, it will not notify in background
-            console.log('Message received. ', payload);
-            const messagesElement = document.querySelector('.message');
-            const dataHeaderElement = document.createElement('h5');
-            const dataElement = document.createElement('pre');
-            dataElement.style = 'overflow-x:hidden;';
-            dataHeaderElement.textContent = 'Message Received:';
-            dataElement.textContent = JSON.stringify(payload, null, 2);
-            messagesElement.appendChild(dataHeaderElement);
-            messagesElement.appendChild(dataElement);
-        });
+        // messaging.onMessage((payload) => {
+        //     // notification data receive here, use it however you want
+        //     // keep in mind if message receive here, it will not notify in background
+        //     console.log('Message received. ', payload);
+        //     const messagesElement = document.querySelector('.message');
+        //     const dataHeaderElement = document.createElement('h5');
+        //     const dataElement = document.createElement('pre');
+        //     dataElement.style = 'overflow-x:hidden;';
+        //     dataHeaderElement.textContent = 'Message Received:';
+        //     dataElement.textContent = JSON.stringify(payload, null, 2);
+        //     messagesElement.appendChild(dataHeaderElement);
+        //     messagesElement.appendChild(dataElement);
+        // });
     </script>
     
 </body>
