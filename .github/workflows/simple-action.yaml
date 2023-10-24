@@ -1,0 +1,17 @@
+name: Simple GitHub Action
+
+on:
+  push:
+    branches:
+      - main  # Change this to your branch name
+
+jobs:
+  print-message:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Print a Message
+      run: echo "Hello, this is a simple GitHub Action!"
