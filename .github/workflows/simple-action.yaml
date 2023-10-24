@@ -1,9 +1,6 @@
 name: Simple GitHub Action
 
-on:
-  push:
-    branches:
-      - main  # Change this to your branch name
+on: pull_request
 
 jobs:
   print-message:
